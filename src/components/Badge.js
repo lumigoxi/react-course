@@ -1,10 +1,11 @@
 import React from 'react';
 import confLogo from '../images/badge-header.svg';
+import './styles/Badge.css';
 
 class Badge extends React.Component {
   render() {
     return (
-      <div>
+      <div className="Badge">
         <div>
           <img src={confLogo} alt="Logo de la conferencia" />
         </div>
