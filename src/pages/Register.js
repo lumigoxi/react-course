@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import header from '../images/badge-header.svg';
 import './styles/Register.css';
 import Badge from '../components/Badge';
+import BadgeForm from '../components/BadgeForm';
 
 class Register extends React.Component {
   render() {
@@ -23,7 +24,10 @@ class Register extends React.Component {
                 twitter="lumigoxi"
                 avatarUrl="https://s.gravatar.com/avatar/0b693cbf8378f5a5e0f5c534ddd47b65?s=80"
               />
-              ,
+            </div>
+
+            <div className="col">
+              <BadgeForm />
             </div>
           </div>
         </div>
