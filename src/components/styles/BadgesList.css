@@ -1,0 +1,42 @@
+.BadgesList li {
+  margin-bottom: 1rem;
+}
+
+.BadgesListItem {
+  background: #ffffff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+  display: flex;
+  padding: 1rem;
+}
+
+.BadgesListItem__avatar {
+  border-radius: 50%;
+  background: #a3a3a3;
+  margin-right: 0.5rem;
+  width: 80px;
+  height: 80px;
+  margin-right: 1em;
+}
+
+.BadgesListItem__info {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.BadgesListItem__socialMedia {
+  height: 1.7em;
+}
+
+.BadgesListItem__socialMedia img {
+  padding-bottom: 0.5em;
+  height: 2.5em;
+}
+
+.BadgesListItem__socialMedia span {
+  color: rgb(29, 161, 242);
+}
+
+.BadgesListItem__JobTitle {
+  margin-bottom: 0;
+}
