@@ -1,23 +1,9 @@
 import React, { Component } from 'react';
 
 export default class BadgeForm extends Component {
-  state = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    jobTitle: '',
-    twitter: '',
-  };
-
-  handleChange = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
   handleClick = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    console.log(this.props.form);
   };
 
   render() {
@@ -31,8 +17,8 @@ export default class BadgeForm extends Component {
               className="form-control"
               type="text"
               name="firstName"
-              onChange={this.handleChange}
-              value={this.state.firstName}
+              onChange={this.props.myChange}
+              value={this.props.formValues.firstName}
             />
           </div>
           <div className="form-group">
@@ -41,8 +27,8 @@ export default class BadgeForm extends Component {
               className="form-control"
               type="text"
               name="lastName"
-              onChange={this.handleChange}
-              value={this.state.lastName}
+              onChange={this.props.myChange}
+              value={this.props.formValues.lastName}
             />
           </div>
           <div className="form-group">
@@ -51,8 +37,8 @@ export default class BadgeForm extends Component {
               className="form-control"
               type="email"
               name="email"
-              onChange={this.handleChange}
-              value={this.state.email}
+              onChange={this.props.myChange}
+              value={this.props.formValues.email}
             />
           </div>
 
@@ -62,8 +48,8 @@ export default class BadgeForm extends Component {
               className="form-control"
               type="text"
               name="jobTitle"
-              onChange={this.handleChange}
-              value={this.state.jobTitle}
+              onChange={this.props.myChange}
+              value={this.props.formValues.jobTitle}
             />
           </div>
 
@@ -73,8 +59,8 @@ export default class BadgeForm extends Component {
               className="form-control"
               type="text"
               name="twitter"
-              onChange={this.handleChange}
-              value={this.state.twitter}
+              onChange={this.props.myChange}
+              value={this.props.formValues.twitter}
             />
           </div>
           <button onClick={this.handleClick} className="btn btn-primary">
