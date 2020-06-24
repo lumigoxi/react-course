@@ -3,12 +3,11 @@ import React, { Component } from 'react';
 export default class BadgeForm extends Component {
   handleClick = (e) => {
     e.preventDefault();
-    console.log(this.props.form);
   };
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <h1>New Attendant</h1>
         <form>
           <div className="form-group">
@@ -67,7 +66,7 @@ export default class BadgeForm extends Component {
             Save
           </button>
         </form>
-      </div>
+      </React.Fragment>
     );
   }
 }

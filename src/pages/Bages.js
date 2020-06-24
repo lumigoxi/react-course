@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
 import confLogo from '../images/badge-header.svg';
 import BadgesList from '../components/BadgesList';
 import './styles/Badges.css';
@@ -42,37 +41,27 @@ export default class Bages extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <Navbar />
-
-          <div>
-            <div className="Badges__hero">
-              <div className="Badges__container">
-                <img
-                  className="Badges-conf-logo"
-                  src={confLogo}
-                  alt="Conf logo"
-                />
-              </div>
-            </div>
-          </div>
-
+      <React.Fragment>
+        <div className="Badges__hero">
           <div className="Badges__container">
-            <div className="Badges__buttons">
-              <Link to="/badges/new" className="btn btn-primary">
-                New Badge
-              </Link>
-            </div>
-          </div>
-
-          <div className="Badges__list">
-            <div className="Badges__container">
-              <BadgesList badges={this.state.data} />
-            </div>
+            <img className="Badges-conf-logo" src={confLogo} alt="Conf logo" />
           </div>
         </div>
-      </div>
+
+        <div className="Badges__container">
+          <div className="Badges__buttons">
+            <Link to="/badges/new" className="btn btn-primary">
+              New Badge
+            </Link>
+          </div>
+        </div>
+
+        <div className="Badges__list">
+          <div className="Badges__container">
+            <BadgesList badges={this.state.data} />
+          </div>
+        </div>
+      </React.Fragment>
     );
   }
 }
