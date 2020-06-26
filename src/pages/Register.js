@@ -1,8 +1,9 @@
 import React from 'react';
-import header from '../images/badge-header.svg';
+import header from '../images/platziconf-logo.svg';
 import './styles/Register.css';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
+import api from '../api';
 
 class Register extends React.Component {
   state = {
@@ -12,6 +13,7 @@ class Register extends React.Component {
       email: '',
       jobTitle: '',
       twitter: '',
+      avatarUrl: '',
     },
   };
 
@@ -24,24 +26,37 @@ class Register extends React.Component {
     });
   };
 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    this.setState({ loading: true, error: null });
+    try {
+      this.setState({ loading: false, error: null });
+      await api.badges.create(this.state.form);
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  };
+
   render() {
     return (
       <React.Fragment>
         <main className="Register__hero">
-          <img className="img-fluid" src={header} alt="register logo" />
+          <img
+            className="Register__hero-img img-fluid"
+            src={header}
+            alt="register logo"
+          />
         </main>
 
         <div className="container">
           <div className="row">
             <div className="col">
-              <Badge
-                attendantInfo={this.state.form}
-                avatarUrl="https://s.gravatar.com/avatar/0b693cbf8378f5a5e0f5c534ddd47b65?s=80"
-              />
+              <Badge attendantInfo={this.state.form} />
             </div>
             <div className="col">
               <BadgeForm
                 myChange={this.handleChange}
+                onSubmit={this.handleSubmit}
                 formValues={this.state.form}
               />
             </div>

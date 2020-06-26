@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles/BadgesList.css';
 import twitterLogo from '../images/Twitter_Logo_Blue.svg';
 import { Link } from 'react-router-dom';
+import Gravatar from './Gravatar';
 export default class BadgesList extends Component {
   render() {
     if (this.props.badges.length === 0) {
@@ -19,10 +20,9 @@ export default class BadgesList extends Component {
         {this.props.badges.map((badge) => {
           return (
             <li key={badge.id} className="BadgesListItem">
-              <img
-                src={badge.avatarUrl}
-                alt="Avatar"
+              <Gravatar
                 className="BadgesListItem__avatar"
+                email={badge.email}
               />
               <div>
                 <h5 className="BadgesListItem__info">

@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 
 export default class BadgeForm extends Component {
-  handleClick = (e) => {
-    e.preventDefault();
-  };
-
   render() {
     return (
       <React.Fragment>
         <h1>New Attendant</h1>
-        <form>
+        <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label>First Name</label>
             <input
@@ -62,9 +58,7 @@ export default class BadgeForm extends Component {
               value={this.props.formValues.twitter}
             />
           </div>
-          <button onClick={this.handleClick} className="btn btn-primary">
-            Save
-          </button>
+          <button className="btn btn-primary">Save</button>
         </form>
       </React.Fragment>
     );
