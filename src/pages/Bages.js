@@ -4,6 +4,8 @@ import BadgesList from '../components/BadgesList';
 import './styles/Badges.css';
 import { Link } from 'react-router-dom';
 import api from '../api';
+import Loading from '../components/Loading';
+import PageError from '../components/PageError';
 export default class Bages extends Component {
   constructor(props) {
     super(props);
@@ -44,11 +46,11 @@ export default class Bages extends Component {
 
   render() {
     if (this.state.loading) {
-      return 'Loading';
+      return <Loading />;
     }
 
     if (this.state.error) {
-      return `${this.state.error.message}`;
+      return <PageError error={this.state.error} />;
     }
 
     return (
