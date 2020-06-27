@@ -20,10 +20,11 @@ export default class BadgesList extends Component {
         {this.props.badges.map((badge) => {
           return (
             <Link
+              key={badge.id}
               to={`/badges/${badge.id}/edit`}
               className="text-reset text-decoration-none"
             >
-              <li key={badge.id} className="BadgesListItem">
+              <li className="BadgesListItem">
                 <Gravatar
                   className="BadgesListItem__avatar"
                   email={badge.email}

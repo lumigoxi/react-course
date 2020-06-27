@@ -14,6 +14,7 @@ export default class Bages extends Component {
       error: null,
       data: null,
     };
+    this.getData = null;
   }
 
   async fetchData() {
@@ -38,14 +39,17 @@ export default class Bages extends Component {
 
   componentDidMount() {
     this.fetchData();
+    this.getData = setInterval(() => {
+      this.fetchData();
+    }, 5000);
   }
 
   componentWillUnmount() {
-    clearTimeout(this.timeOutId);
+    clearInterval(this.getData);
   }
 
   render() {
-    if (this.state.loading) {
+    if (this.state.loading && !this.state.data) {
       return <Loading />;
     }
 
