@@ -36,7 +36,6 @@ export default class BadgeForm extends Component {
               value={this.props.formValues.email}
             />
           </div>
-
           <div className="form-group">
             <label>JobTitle</label>
             <input
@@ -47,7 +46,6 @@ export default class BadgeForm extends Component {
               value={this.props.formValues.jobTitle}
             />
           </div>
-
           <div className="form-group">
             <label>Twitter</label>
             <input
@@ -59,6 +57,9 @@ export default class BadgeForm extends Component {
             />
           </div>
           <button className="btn btn-primary">Save</button>
+          {this.props.error && (
+            <p className="text-danger"> {this.props.error.message} </p>
+          )}
         </form>
       </React.Fragment>
     );

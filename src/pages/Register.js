@@ -4,9 +4,12 @@ import './styles/Register.css';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
 import api from '../api';
+import Loading from '../components/Loading';
 
 class Register extends React.Component {
   state = {
+    loading: false,
+    error: null,
     form: {
       firstName: '',
       lastName: '',
@@ -30,14 +33,20 @@ class Register extends React.Component {
     e.preventDefault();
     this.setState({ loading: true, error: null });
     try {
-      this.setState({ loading: false, error: null });
       await api.badges.create(this.state.form);
+      this.setState({ loading: false, error: null });
+
+      this.props.history.push('/badges');
     } catch (error) {
       this.setState({ loading: false, error: error });
     }
   };
 
   render() {
+    if (this.state.loading) {
+      return <Loading />;
+    }
+
     return (
       <React.Fragment>
         <main className="Register__hero">
@@ -58,6 +67,7 @@ class Register extends React.Component {
                 myChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 formValues={this.state.form}
+                error={this.state.error}
               />
             </div>
           </div>
