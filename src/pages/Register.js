@@ -63,6 +63,7 @@ class Register extends React.Component {
               <Badge attendantInfo={this.state.form} />
             </div>
             <div className="col">
+              <h1>New Attendant</h1>
               <BadgeForm
                 myChange={this.handleChange}
                 onSubmit={this.handleSubmit}

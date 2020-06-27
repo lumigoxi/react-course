@@ -19,22 +19,27 @@ export default class BadgesList extends Component {
       <ul className="list-unstyled BadgesList">
         {this.props.badges.map((badge) => {
           return (
-            <li key={badge.id} className="BadgesListItem">
-              <Gravatar
-                className="BadgesListItem__avatar"
-                email={badge.email}
-              />
-              <div>
-                <h5 className="BadgesListItem__info">
-                  {badge.firstName} {badge.lastName}
-                </h5>
-                <div className="BadgesListItem__socialMedia">
-                  <img src={twitterLogo} alt="" />
-                  <span>@{badge.twitter}</span>
+            <Link
+              to={`/badges/${badge.id}/edit`}
+              className="text-reset text-decoration-none"
+            >
+              <li key={badge.id} className="BadgesListItem">
+                <Gravatar
+                  className="BadgesListItem__avatar"
+                  email={badge.email}
+                />
+                <div>
+                  <h5 className="BadgesListItem__info">
+                    {badge.firstName} {badge.lastName}
+                  </h5>
+                  <div className="BadgesListItem__socialMedia">
+                    <img src={twitterLogo} alt="" />
+                    <span>@{badge.twitter}</span>
+                  </div>
+                  <p className="BadgesListItem__JobTitle">{badge.jobTitle}</p>
                 </div>
-                <p className="BadgesListItem__JobTitle">{badge.jobTitle}</p>
-              </div>
-            </li>
+              </li>
+            </Link>
           );
         })}
       </ul>
