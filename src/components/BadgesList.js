@@ -1,27 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './styles/BadgesList.css';
 import twitterLogo from '../images/Twitter_Logo_Blue.svg';
 import { Link } from 'react-router-dom';
 import Gravatar from './Gravatar';
-export default class BadgesList extends Component {
-  render() {
-    if (this.props.badges.length === 0) {
-      return (
-        <React.Fragment>
-          <h3>No badges were found</h3>
-          <Link className="btn btn-primary" to="/badges/new">
-            Create new Badge
-          </Link>
-        </React.Fragment>
-      );
-    }
+export default function BadgesList(props) {
+  const [query, setQuery] = React.useState('');
+
+  const FilteredBadges = props.badges.filter((badge) => {
+    return badge.includes(query);
+  });
+
+  if (props.badges.length === 0) {
     return (
+      <React.Fragment>
+        <h3>No badges were found</h3>
+        <Link className="btn btn-primary" to="/badges/new">
+          Create new Badge
+        </Link>
+      </React.Fragment>
+    );
+  }
+  return (
+    <React.Fragment>
+      <div className="form-group">
+        <label>Filter Badges</label>
+        <input
+          type="text"
+          className="form-control"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+        />
+      </div>
       <ul className="list-unstyled BadgesList">
-        {this.props.badges.map((badge) => {
+        {props.badges.map((badge) => {
           return (
             <Link
               key={badge.id}
-              to={`/badges/${badge.id}/edit`}
+              to={`/badges/${badge.id}`}
               className="text-reset text-decoration-none"
             >
               <li className="BadgesListItem">
@@ -44,6 +61,6 @@ export default class BadgesList extends Component {
           );
         })}
       </ul>
-    );
-  }
+    </React.Fragment>
+  );
 }

@@ -16,7 +16,6 @@ class Register extends React.Component {
       email: '',
       jobTitle: '',
       twitter: '',
-      avatarUrl: '',
     },
   };
 
