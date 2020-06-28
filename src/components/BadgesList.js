@@ -3,16 +3,40 @@ import './styles/BadgesList.css';
 import twitterLogo from '../images/Twitter_Logo_Blue.svg';
 import { Link } from 'react-router-dom';
 import Gravatar from './Gravatar';
-export default function BadgesList(props) {
+
+function useSearchBadges(badges) {
   const [query, setQuery] = React.useState('');
+  const [FilteredBadges, setFilteredBadges] = React.useState(badges);
 
-  const FilteredBadges = props.badges.filter((badge) => {
-    return badge.includes(query);
-  });
+  React.useMemo(() => {
+    const Result = badges.filter((badge) => {
+      const fullName = `${badge.firstName} ${badge.lastName}`;
+      return fullName.toLowerCase().includes(query.toLowerCase());
+    });
+    setFilteredBadges(Result);
+  }, [badges, query]);
 
-  if (props.badges.length === 0) {
+  return { query, setQuery, FilteredBadges };
+}
+
+export default function BadgesList(props) {
+  const badges = props.badges;
+  const { query, setQuery, FilteredBadges } = useSearchBadges(badges);
+
+  if (FilteredBadges.length === 0) {
     return (
       <React.Fragment>
+        <div className="form-group">
+          <label>Filter Badges</label>
+          <input
+            type="text"
+            className="form-control"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+          />
+        </div>
         <h3>No badges were found</h3>
         <Link className="btn btn-primary" to="/badges/new">
           Create new Badge
@@ -34,7 +58,7 @@ export default function BadgesList(props) {
         />
       </div>
       <ul className="list-unstyled BadgesList">
-        {props.badges.map((badge) => {
+        {FilteredBadges.map((badge) => {
           return (
             <Link
               key={badge.id}
