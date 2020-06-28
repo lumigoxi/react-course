@@ -19,7 +19,7 @@ $ npm start
 
 ##### for production
 ```sh
-$ npm build
+$ npm run build
 ```
 
 
