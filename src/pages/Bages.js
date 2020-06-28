@@ -25,9 +25,20 @@ export default class Bages extends Component {
 
     try {
       const data = await api.badges.list();
+      const results = [
+        {
+          firstName: 'Miguel',
+          lastName: 'Xiap (My badge only read)',
+          email: 'lumigoxi@gmail.com',
+          jobTitle: 'Software Engineer',
+          twitter: 'lumigoxi',
+          id: 'lumigoxi',
+        },
+        ...data,
+      ];
       this.setState({
         loading: false,
-        data: data,
+        data: results,
       });
     } catch (error) {
       this.setState({

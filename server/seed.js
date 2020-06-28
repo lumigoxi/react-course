@@ -4,16 +4,7 @@ const faker = require('faker');
 const md5 = require('md5');
 
 function createBadges(limit = 50) {
-  const result = [
-    {
-      id: 'lumiCode',
-      firstName: 'Miguel',
-      lastName: 'Xiap',
-      email: 'lumigoxi@gmail.com',
-      jobTitle: 'Software Engineer',
-      twitter: `lumigoxi`,
-    },
-  ];
+  const result = [];
 
   for (let i = 0; i < limit; i++) {
     const firstName = faker.name.firstName();
@@ -27,7 +18,7 @@ function createBadges(limit = 50) {
       email,
       jobTitle: faker.name.jobTitle(),
       twitter: `${firstName}${lastName}${faker.address.zipCode()}`,
-      // avatarUrl: `https://www.gravatar.com/avatar/${md5(email)}?d=identicon`,
+      avatarUrl: `https://www.gravatar.com/avatar/${md5(email)}?d=identicon`,
     });
   }
 
